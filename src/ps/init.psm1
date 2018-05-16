@@ -1,8 +1,8 @@
-$hubDefaultLimit=[int]::MaxValue
+$hubDefaultLimit = [int]::MaxValue
 add-type -Path ${PSScriptRoot}/Blackduck.Hub.Powershell.dll 
 
-function VerifyHubLogin(){
-    if (!$global:hubInvocationParams){
+function VerifyHubLogin() {
+    if (!$global:hubInvocationParams) {
         throw 'Please use Login-BlackDuckHub to log in to hub prior to running other Hub CMDLets'
     }
 }
@@ -13,10 +13,10 @@ function UrlEncode($url) {
 function CombineQueryParams($paramMap) {
     $result = (New-Object 'System.Text.StringBuilder')
     ForEach-Object -InputObject $paramMap.Keys -Process {
-        $value=$paramMap[$_]
-        $result=$result.Append(",").Append((UrlEncode("${_}:${value}")))
+        $value = $paramMap[$_]
+        $result = $result.Append(",").Append((UrlEncode("${_}:${value}")))
     }
-    $result = $result.Remove(0,1)
+    $result = $result.Remove(0, 1)
     return $result.ToString()
 }
 
@@ -46,3 +46,4 @@ function CombineQueryParams($paramMap) {
 # Upload CMDLets
 . ${PSScriptRoot}/upload/Upload-HubBom.ps1
 . ${PSScriptRoot}/upload/Upload-HubScan.ps1
+

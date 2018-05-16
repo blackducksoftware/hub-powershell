@@ -5,7 +5,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = 'init.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.0.1'
@@ -53,7 +53,7 @@ Copyright = 'Copyright (c) 2018 Black Duck Software. Use subject to furnished li
 # RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @('init.ps1')
+# ScriptsToProcess = @('init.ps1')
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
@@ -65,13 +65,26 @@ ScriptsToProcess = @('init.ps1')
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'Get-HubLicenseText'      ,
+'Unwrap-HubLicense'       ,
+'Get-HubProject'          ,
+'Get-HubProjectVersion'   ,
+'Remove-HubProject'       ,
+'Remove-HubProjectVersion',
+'Get-HubComponentVersion' ,
+'Get-HubNotifications'    ,
+'Login-BlackDuckHub'      ,
+'Logout-BlackDuckHub'     ,
+'Upload-HubBom'           ,
+'Upload-HubScan'          
+
+
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = '*'
+CmdletsToExport = @()
 
 # Variables to export from this module
-VariablesToExport = '*'
+VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()

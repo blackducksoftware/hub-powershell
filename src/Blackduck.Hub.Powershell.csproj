@@ -13,7 +13,7 @@
   </ItemGroup>
   <ItemGroup>
     <PowerShellFiles Include="ps/**/*.ps1"/>
-    <PowerShellFiles Include="ps/*.psd1" />
+    <PowerShellFiles Include="ps/*.ps*" />
   </ItemGroup>
 
   <Target Name="DeletePreviousBuild" BeforeTargets="Clean">
