@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PowershellVersion>6.0.1</PowershellVersion>
+    <OutDir>publish</OutDir>
+    <Configuration>Release</Configuration>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CodeFiles Include="csharp/**/*.cs"/>  
+    <PackageReference Include="System.Management.Automation" Condition="'$(TargetFramework)' == 'netcoreapp2.0'" Version="$(PowershellVersion)"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PowerShellFiles Include="ps/**/*.ps1"/>
+    <PowerShellFiles Include="ps/*.psd1" />
+  </ItemGroup>
+
+  <Target Name="DeletePreviousBuild" BeforeTargets="Clean">
+    <Message Text="Deleting Publish Directory"/>
+    <RemoveDir Directories="$(OutDir)" />
+    <RemoveDir Directories="$(BaseIntermediateOutputPath)"/>
+  </Target>
+
+  <Target Name="CopyPowerShellFiles" AfterTargets="Build">
+    <Message Text="Running AfterBuild"  />
+    <Copy  
+          SourceFiles="@(PowerShellFiles)"  
+          DestinationFolder="$(OutDir)/%(RecursiveDir)"
+      />  
+  </Target>
+</Project>
