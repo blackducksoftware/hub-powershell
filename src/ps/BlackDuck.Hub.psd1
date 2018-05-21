@@ -5,7 +5,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'init.psm1'
+RootModule = 'bd.hub.functions.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.0.1'
@@ -53,7 +53,7 @@ Copyright = 'Copyright (c) 2018 Black Duck Software. Use subject to furnished li
 # RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @('init.ps1')
+ScriptsToProcess = @('init.ps1')
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()

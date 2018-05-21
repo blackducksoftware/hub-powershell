@@ -43,16 +43,20 @@ function Login-BlackDuckHub {
     if ($Token){
         $authHeaders = @{'Authorization' = "token ${Token}"}
         $responseBody = Invoke-RestMethod -Method Post -Uri "${Url}/api/tokens/authenticate" -Headers $authHeaders -ResponseHeadersVariable loginResponse @hubInvocationParams
-        $invocationHeaders = @{'Cookie'= "AUTHORIZATION_BEARER=$($responseBody.bearerToken)"; 'X-CSRF-TOKEN'=$loginResponse['X-CSRF-TOKEN'][0]}  
+        $invocationHeaders = @{'Cookie'= "AUTHORIZATION_BEARER=$($responseBody.bearerToken)" }  
     }
     else {
         $authCredential=(Get-Credential -Message "Enter your HUB Credentials")    
         $body="j_username=$([System.Web.HttpUtility]::UrlEncode($authCredential.UserName))&j_password=$([System.Web.HttpUtility]::UrlEncode($authCredential.GetNetworkCredential().Password))"
         Invoke-RestMethod -Method Post -ContentType "application/x-www-form-urlencoded" -Uri "${url}/j_spring_security_check" -Body $body @hubInvocationParams -ResponseHeadersVariable loginResponse
         Remove-Variable body
-        $invocationHeaders = @{'Cookie'= $loginResponse['Set-Cookie'][0]; 'X-CSRF-TOKEN'=$loginResponse['X-CSRF-TOKEN'][0]}  
+        $invocationHeaders = @{'Cookie'= $loginResponse['Set-Cookie'][0]}  
     }
     
+    if ($loginResponse['X-CSRF-TOKEN']){
+        $invocationHeaders['X-CSRF-TOKEN']=$loginResponse['X-CSRF-TOKEN'][0]
+    }
+
     #Populate hub invocation data in the session
     $global:hubUrl=$Url
     $global:hubInvocationParams = $hubInvocationParams

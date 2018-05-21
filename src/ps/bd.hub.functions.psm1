@@ -1,4 +1,4 @@
-$hubDefaultLimit = [int]::MaxValue
+. ${PSScriptRoot}/init.ps1
 add-type -Path ${PSScriptRoot}/Blackduck.Hub.Powershell.dll 
 
 function VerifyHubLogin() {
@@ -25,19 +25,16 @@ function CombineQueryParams($paramMap) {
 . ${PSScriptRoot}/login/Logout-BlackDuckHub.ps1
 
 # License CMDLets
-. ${PSScriptRoot}/licenses/licenses.ps1
 . ${PSScriptRoot}/licenses/Unwrap-HubLicense.ps1
 . ${PSScriptRoot}/licenses/Get-HubLicenseText.ps1
 
 # Component CMDLets
-. ${PSScriptRoot}/components/components.ps1
 . ${PSScriptRoot}/components/Get-HubComponentVersion.ps1
 
 # Notifications CMDLets
 . ${PSScriptRoot}/notifications/Get-HubNotifications.ps1
 
 # Project CMDLets
-. ${PSScriptRoot}/projects/projects.ps1
 . ${PSScriptRoot}/projects/Get-HubProject.ps1
 . ${PSScriptRoot}/projects/Get-HubProjectVersion.ps1
 . ${PSScriptRoot}/projects/Remove-HubProjectVersion.ps1
