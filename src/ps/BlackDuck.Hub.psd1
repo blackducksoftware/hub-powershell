@@ -76,7 +76,9 @@ FunctionsToExport = 'Get-HubLicenseText'      ,
 'Login-BlackDuckHub'      ,
 'Logout-BlackDuckHub'     ,
 'Upload-HubBom'           ,
-'Upload-HubScan'          
+'Upload-HubScan'          ,
+'Get-HubUserGroup'        ,
+'New-HubUserGroup'
 
 
 

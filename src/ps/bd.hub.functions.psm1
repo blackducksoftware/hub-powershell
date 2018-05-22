@@ -44,3 +44,6 @@ function CombineQueryParams($paramMap) {
 . ${PSScriptRoot}/upload/Upload-HubBom.ps1
 . ${PSScriptRoot}/upload/Upload-HubScan.ps1
 
+# User/Group CMDLets
+. ${PSScriptRoot}/usergroup/Get-HubUserGroup.ps1
+. ${PSScriptRoot}/usergroup/New-HubUserGroup.ps1
