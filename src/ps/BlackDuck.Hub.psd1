@@ -78,7 +78,9 @@ FunctionsToExport = 'Get-HubLicenseText'      ,
 'Upload-HubBom'           ,
 'Upload-HubScan'          ,
 'Get-HubUserGroup'        ,
-'New-HubUserGroup'
+'New-HubUserGroup'        ,
+'Remove-HubUserGroup'     ,
+'Remove-HubUserGroupV1'     
 
 
 

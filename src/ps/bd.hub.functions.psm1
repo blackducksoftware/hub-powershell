@@ -47,3 +47,5 @@ function CombineQueryParams($paramMap) {
 # User/Group CMDLets
 . ${PSScriptRoot}/usergroup/Get-HubUserGroup.ps1
 . ${PSScriptRoot}/usergroup/New-HubUserGroup.ps1
+. ${PSScriptRoot}/usergroup/Remove-HubUserGroup.ps1
+. ${PSScriptRoot}/usergroup/Remove-HubUserGroupV1.ps1
