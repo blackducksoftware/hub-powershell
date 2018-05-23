@@ -8,7 +8,7 @@ function Remove-HubUserGroup {
   #>
 
     Param(
-        [Parameter(ValueFromPipeline, HelpMessage = 'The project to be deleted', Mandatory = $true)]
+        [Parameter(ValueFromPipeline, HelpMessage = 'The user group to be deleted', Mandatory = $true)]
         [BlackDuck.Hub.UserGroup] $UserGroupToRemove
     )
   
