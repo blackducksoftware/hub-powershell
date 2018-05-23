@@ -18,10 +18,12 @@ function Login-BlackDuckHub {
 
 
     #>
-
+    [cmdletbinding(
+        DefaultParameterSetName='CredAuth'
+    )]
     Param(
         #The URL of the Hub instance
-        [Parameter(HelpMessage = 'Hub URL', Mandatory = $true)]
+        [Parameter(HelpMessage = 'Hub URL', Mandatory = $true, Position = 1)]
         [string]$Url,
     
         #Whether or not Hub's certificate should be trusted if its signer is unknown
@@ -29,8 +31,12 @@ function Login-BlackDuckHub {
         [switch]$AlwaysTrustCert=$false,
 
         #The Hub API token to use for authentication.
-        [Parameter(HelpMessage = 'Hub API Token. If specified, it will be used in leau of username and password for authentication')]
-        [string]$Token
+        [Parameter(HelpMessage = 'Hub API Token. If specified, it will be used in leau of username and password for authentication', ParameterSetName='TokenAuth', Mandatory=$true, Position=2)]
+        [string]$Token,
+
+        #The Username/Password credential for authentication. This authentication mechanism may be deprecated in the future, so use token authentication whenever possible.
+        [Parameter(HelpMessage='Hub Username&Password credential', ParameterSetName='CredAuth', Position=2)]
+        [PSCredential] $Credential
     )
     
     $hubInvocationParams = @{
@@ -45,9 +51,11 @@ function Login-BlackDuckHub {
         $responseBody = Invoke-RestMethod -Method Post -Uri "${Url}/api/tokens/authenticate" -Headers $authHeaders -ResponseHeadersVariable loginResponse @hubInvocationParams
         $invocationHeaders = @{'Cookie'= "AUTHORIZATION_BEARER=$($responseBody.bearerToken)" }  
     }
-    else {
-        $authCredential=(Get-Credential -Message "Enter your HUB Credentials")    
-        $body="j_username=$([System.Web.HttpUtility]::UrlEncode($authCredential.UserName))&j_password=$([System.Web.HttpUtility]::UrlEncode($authCredential.GetNetworkCredential().Password))"
+    else {    
+        if (!$Credential){
+            $Credential = Get-Credential -Message "Please enter your Black Duck Hub login credentials." -Title "Black Duck Hub Login"
+        }
+        $body="j_username=$([System.Web.HttpUtility]::UrlEncode($Credential.UserName))&j_password=$([System.Web.HttpUtility]::UrlEncode($Credential.GetNetworkCredential().Password))"
         Invoke-RestMethod -Method Post -ContentType "application/x-www-form-urlencoded" -Uri "${url}/j_spring_security_check" -Body $body @hubInvocationParams -ResponseHeadersVariable loginResponse
         Remove-Variable body
         $invocationHeaders = @{'Cookie'= $loginResponse['Set-Cookie'][0]}  
