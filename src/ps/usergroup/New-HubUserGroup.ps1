@@ -28,7 +28,9 @@ function New-HubUserGroup {
     }
     try{
         $raw=Invoke-RestMethod -Method Post -Uri $url  -ContentType "application/json" -Body ($postParams | ConvertTo-Json) @Global:hubInvocationParams        
-        return [BlackDuck.Hub.UserGroup]::Parse($raw)
+        #Uncomment after switching from V1 API
+        #return [BlackDuck.Hub.UserGroup]::Parse($raw)
+        return Get-HubUserGroup -Query "$($raw.Name)"
     } catch {
         Write-Error "StatusCode: $($_.Exception.Response.StatusCode.value__)"       
         throw $_.Exception
