@@ -6,7 +6,7 @@ function Get-HubUser {
         
       .EXAMPLE     
   #>
-    [OutputType([BlackDuck.Hub.UserGroup])]
+    [OutputType([BlackDuck.Hub.User])]
     Param(
         [Parameter(HelpMessage='The maximum number of users to return',ParameterSetName='ListUsers')]
         [int] $Limit = $hubDefaultLimit,
