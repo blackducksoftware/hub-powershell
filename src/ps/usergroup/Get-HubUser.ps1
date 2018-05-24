@@ -25,7 +25,7 @@ function Get-HubUser {
 
 
     if ($UserName){
-        $url="${Global:hubUrl}/api/users?q=userName:${UserName}"
+        $url="${Global:hubUrl}/api/users?q=userName:$([System.Web.HttpUtility]::UrlEncode($UserName))"
     } else {
         $url="${Global:hubUrl}/api/users?limit=${Limit}"
     }
@@ -36,7 +36,14 @@ function Get-HubUser {
 
 
     $raw=Invoke-RestMethod -Uri $url @Global:hubInvocationParams        
-    return $raw.items | ForEach-Object { 
+    $items = $raw.items
+
+    #The query API returns lexicographic substring matches as well as the full match. Filter out the excesses
+    if ($UserName) {
+        $items = $items | ? {$_.userName -eq $UserName}
+    }
+
+    return $items| ForEach-Object { 
         [BlackDuck.Hub.User]::Parse($_)
     }
 }
