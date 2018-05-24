@@ -53,3 +53,4 @@ function CombineQueryParams($paramMap) {
 . ${PSScriptRoot}/usergroup/New-HubUser.ps1
 . ${PSScriptRoot}/usergroup/Add-HubUserToGroup.ps1
 . ${PSScriptRoot}/usergroup/Get-HubRole.ps1
+. ${PSScriptRoot}/usergroup/Add-HubRole.ps1

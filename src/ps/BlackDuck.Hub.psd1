@@ -84,7 +84,8 @@ FunctionsToExport = 'Get-HubLicenseText'      ,
 'Get-HubUser'        ,
 'New-HubUser'        ,
 'Add-HubUserToGroup' ,
-'Get-HubRole'
+'Get-HubRole'        ,
+'Add-HubRole'        
 
 
 
