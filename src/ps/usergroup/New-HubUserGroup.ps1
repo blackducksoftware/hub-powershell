@@ -32,7 +32,6 @@ function New-HubUserGroup {
         #return [BlackDuck.Hub.UserGroup]::Parse($raw)
         return Get-HubUserGroup -Query "$($raw.Name)"
     } catch {
-        Write-Error "StatusCode: $($_.Exception.Response.StatusCode.value__)"       
-        throw $_.Exception
+        handleHubError($_)
     }
 }

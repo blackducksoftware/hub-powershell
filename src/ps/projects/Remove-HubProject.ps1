@@ -24,7 +24,10 @@ function Remove-HubProject {
         else {
             throw "Not a valid project to remove: ${ProjectToRemove}"
         }
-
-        $result = Invoke-RestMethod -Uri $url -Method Delete @global:hubInvocationParams
+        try{
+            $result = Invoke-RestMethod -Uri $url -Method Delete @global:hubInvocationParams
+        } catch {
+            handleHubError($_)
+        }
     }
 }

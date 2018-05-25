@@ -37,6 +37,16 @@ function Get-HubProject {
     }
 
     $url="${global:hubUrl}/api/projects?limit=${hubDefaultLimit}&q=${urlQuery}" 
-    $projectsJson=(Invoke-RestMethod $url @global:hubInvocationParams)
-    return $projectsJson.items | ForEach-Object {[HubProject]::Parse($_)}
+    try{ 
+        $projectsJson=(Invoke-RestMethod $url @global:hubInvocationParams)
+        $items = $projectsJson.items
+        Remove-Variable projectsJson
+        if ($Name) {
+            $items = $items | Where-Object {$_.name -eq $Name}
+        }
+
+        return $items | ForEach-Object {[HubProject]::Parse($_)}
+    } catch {
+        handleHubError($_)
+    }
 }

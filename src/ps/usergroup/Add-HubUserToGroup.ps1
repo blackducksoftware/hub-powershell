@@ -28,7 +28,6 @@ function Add-HubUserToGroup {
         $raw=Invoke-RestMethod -Method Post -Uri $postUrl  -ContentType "application/json" -Body $postBody @Global:hubInvocationParams        
         return $?
     } catch {
-        Write-Error "StatusCode: $($_.Exception.Response.StatusCode.value__)"       
-        throw $_.Exception
+        handleHubError($_)
     }
 }

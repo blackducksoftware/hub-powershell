@@ -17,6 +17,10 @@ function Remove-HubProjectVersion {
             throw "Not a valid version to remove: ${VersionToRemove}"
         }
 
-        $result = Invoke-RestMethod -Uri $url -Method Delete @global:hubInvocationParams
+        try{
+            $result = Invoke-RestMethod -Uri $url -Method Delete @global:hubInvocationParams
+        } catch {
+            handleHubError($_)
+        }
     }
 }

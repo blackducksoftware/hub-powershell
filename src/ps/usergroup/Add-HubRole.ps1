@@ -7,6 +7,7 @@ function Add-HubRole {
       .EXAMPLE     
   #>
 
+    [CmdletBinding()]
     Param(
         #The role to be added
         [Parameter(HelpMessage = 'The Role to be added', Mandatory = $true, Position = 1)]
@@ -52,7 +53,6 @@ function Add-HubRole {
         return $?
     }
     catch {
-        Write-Error "StatusCode: $($_.Exception.Response.StatusCode.value__)"       
-        throw $_.Exception
+        handleHubError($_)
     }
 }

@@ -14,8 +14,11 @@ function Get-HubNotifications {
 
 
     VerifyHubLogin
-
-    $raw=Invoke-RestMethod "${Global:hubUrl}/api/notifications?limit=${Limit}" @Global:hubInvocationParams        
+    try {
+        $raw=Invoke-RestMethod "${Global:hubUrl}/api/notifications?limit=${Limit}" @Global:hubInvocationParams        
+    } catch {
+        handleHubError($_)
+    }
     return $raw.items | ForEach-Object { 
         if ('VULNERABILITY'.Equals($_.type)){
             return [BlackDuck.Hub.VulnerabilityNotification]::Parse($_)    

@@ -24,7 +24,10 @@ function Remove-HubUserGroupV1 {
         else {
             throw "Not a valid user group to remove: ${UserGroupToRemove}"
         }
-
-        $result = Invoke-RestMethod -Uri $url -Method Delete @global:hubInvocationParams -FollowRelLink
+        try{
+            $result = Invoke-RestMethod -Uri $url -Method Delete @global:hubInvocationParams -FollowRelLink
+        } catch {
+            handleHubError($_)
+        }
     }
 }
