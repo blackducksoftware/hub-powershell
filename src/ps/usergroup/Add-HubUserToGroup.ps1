@@ -26,7 +26,6 @@ function Add-HubUserToGroup {
     $postUrl = "$($User.href)/usergroups"
     try{
         $raw=Invoke-RestMethod -Method Post -Uri $postUrl  -ContentType "application/json" -Body $postBody @Global:hubInvocationParams        
-        return $?
     } catch {
         handleHubError($_)
     }
