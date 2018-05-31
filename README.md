@@ -1,8 +1,22 @@
 # PowerShell Core modules for Hub
+
 With PowerShell, it is easier than ever to perform and automate routine Black Duck Hub tasks and generate custom reports not provided by the web interface.
 
 # Under Construction :construction:
 **Caution:** These tools are currently are still under development. They are not presently supported by Black Duck, and your use of them is entirely at your own risk.
+
+# Building
+*Requires .Net Core 2.0+*
+
+Switch to the `src` directory and run `dotnet build`
+
+# Installing
+
+Copy the "publish" directory into the PowerShell Modules directory with the name `BlackDuck.Hub`. e.g.
+
+```
+Copy-Item -Recurse  -Recurse ./publish "$(($env:PSModulePath -split ':')[0])/BlackDuck.Hub" 
+```
 
 # Examples
 
