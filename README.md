@@ -17,6 +17,16 @@ Copy the "publish" directory into the PowerShell Modules directory with the name
 ```
 Copy-Item -Recurse  -Recurse ./publish "$(($env:PSModulePath -split ':')[0])/BlackDuck.Hub" 
 ```
+# Publishing to PSGallery
+
+1. Increment the version number in BlackDuck.Hub.psd1
+2. Build and install using the instructions above
+3. Run 
+```
+    Publish-Module -Name Blackduck.Hub -NuGetApiKey $nugetApiKey
+```
+
+(Your Nuget API key can be obtained from your profile at https://www.powershellgallery.com/account)
 
 # Examples
 

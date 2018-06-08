@@ -26,10 +26,10 @@ CompanyName = 'Black Duck Software'
 Copyright = 'Copyright (c) 2018 Black Duck Software. Use subject to furnished license. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Allows command-line interaction with and automation of certain features in Black Duck Hub'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = '6.0.1'
+PowerShellVersion = '6.0.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -116,10 +116,10 @@ PrivateData = @{
         # Tags = @()
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/blackducksoftware/hub-powershell/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/blackducksoftware/hub-powershell'
 
         # A URL to an icon representing this module.
         # IconUri = ''
