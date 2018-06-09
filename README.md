@@ -5,18 +5,27 @@ With PowerShell, it is easier than ever to perform and automate routine Black Du
 # Under Construction :construction:
 **Caution:** These tools are currently are still under development. They are not presently supported by Black Duck, and your use of them is entirely at your own risk.
 
+#Installation from PowerShell Gallery
+
+In Power-Shell, enter:
+
+```
+    Install-Module BlackDuck.Hub
+```
+
 # Building
 *Requires .Net Core 2.0+*
 
 Switch to the `src` directory and run `dotnet build`
 
-# Installing
+# Installing from Local Build
 
 Copy the "publish" directory into the PowerShell Modules directory with the name `BlackDuck.Hub`. e.g.
 
 ```
 Copy-Item -Recurse  -Recurse ./publish "$(($env:PSModulePath -split ':')[0])/BlackDuck.Hub" 
 ```
+
 # Publishing to PSGallery
 
 1. Increment the version number in BlackDuck.Hub.psd1

@@ -8,7 +8,7 @@
 RootModule = 'bd.hub.functions.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -85,7 +85,8 @@ FunctionsToExport = 'Get-HubLicenseText'      ,
 'New-HubUser'        ,
 'Add-HubUserToGroup' ,
 'Get-HubRole'        ,
-'Add-HubRole'        
+'Add-HubRole'        ,
+'Register-BlackDuckHub'
 
 
 
