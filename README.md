@@ -66,7 +66,7 @@ $separator = "`n`n==============================================================
 [string]::Join($separator, $licenseTexts) | Out-File /var/tmp/licenses.txt 
 ```
 
-Get all the project versions affected by a notification
+Get all the project versions affected by vulnerability notifications.
 ```
 Get-HubNotifications | ? Type -eq 'Vulnerability' | select -Expand AffectedProjectVersions | Get-HubProjectVersion
 ```
