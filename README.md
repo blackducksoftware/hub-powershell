@@ -5,7 +5,7 @@ With PowerShell, it is easier than ever to perform and automate routine Black Du
 # Under Construction :construction:
 **Caution:** These tools are currently are still under development. They are not presently supported by Black Duck, and your use of them is entirely at your own risk.
 
-#Installation from PowerShell Gallery
+# Installation from PowerShell Gallery
 
 In Power-Shell, enter:
 
