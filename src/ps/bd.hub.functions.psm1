@@ -55,5 +55,9 @@ function CombineQueryParams($paramMap) {
 . ${PSScriptRoot}/usergroup/Get-HubRole.ps1
 . ${PSScriptRoot}/usergroup/Add-HubRole.ps1
 
-# Registratoin CMDLets
+# Registration CMDLets
 . ${PSScriptRoot}/registration/Register-BlackDuckHub.ps1
+
+# Code Location CMDlets
+. ${PSScriptRoot}/codelocations/Get-HubCodeLocation.ps1
+. ${PSScriptRoot}/codelocations/Remove-HubCodeLocation.ps1
